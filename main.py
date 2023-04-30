@@ -1,8 +1,11 @@
-from fastapi import FastAPI, Query
+from fastapi import FastAPI, Query, Request
 from fastapi.responses import HTMLResponse
 from typing import List
+from fastapi.templating import Jinja2Templates
 
 app = FastAPI()
+
+templates = Jinja2Templates(directory='templates')
 
 @app.get('/')
 async def root():
@@ -54,3 +57,12 @@ async def getMadLib(name: str, q: List[str] = Query(default=[])):
             if key in ['adjectives', 'nouns', 'verbs', 'miscellanies']:
                 payload[key] = madlib[key]
     return payload
+
+@app.get('/madlibsgame/{name}')
+async def getMadLibGame(request: Request, name: str):
+    my_mad_lib = madlibsDB.get(name, None)
+    if my_mad_lib:
+        return templates.TemplateResponse('madlib.html', {
+            'request': request,
+            'my_mad_lib': my_mad_lib.get('HTML')
+        })
