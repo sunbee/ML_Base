@@ -18,6 +18,42 @@
             {{ my_mad_lib }}
             {% endautoescape %}    
         </div>
+        <div class="modal" style="display: none;">
+            <div class="modal-content" data-name="">
+                <h5 id="adjectives" style="display: none;">
+                    {%- for adjective in adjectives -%} 
+                        <span class="adjective-words">{{ adjective }}</span>
+                        {%- if loop.index % 3 == 0 -%} 
+                        <br>
+                        {% endif %}
+                    {% endfor %}
+                </h5>
+                <h5 id="nouns" style="display: none;">
+                    {%- for noun in nouns -%} 
+                        <span class="noun-words">{{ noun }}</span>
+                        {%- if loop.index % 3 == 0 -%} 
+                        <br>
+                        {% endif %}
+                    {% endfor %}
+                </h5>
+                <h5 id="verbs" style="display: none;">
+                    {%- for verb in verbs -%} 
+                        <span class="verb-words">{{ verb }}</span>
+                        {%- if loop.index % 3 == 0 -%} 
+                        <br>
+                        {% endif %}
+                    {% endfor %}
+                </h5>
+                <h5 id="miscellanies" style="display: none;">
+                    {%- for miscellany in miscellanies -%} 
+                        <span class="miscellany-words">{{ miscellany }}</span>
+                        {%- if loop.index % 3 == 0 -%} 
+                        <br>
+                        {% endif %}
+                    {% endfor %}
+                </h5>
+            </div>
+        </div>
         <script src="https://cdn.jsdelivr.net/gh/sunbee/ML_Base@rev004/JS/mad_modal.js"></script>
     </body>
 </html>
