@@ -72,6 +72,6 @@ async def getMadLibGame(request: Request, name: str):
             'my_mad_lib': my_mad_lib.get('HTML'),
             'adjectives': my_mad_lib.get('adjectives'),
             'nouns': my_mad_lib.get('nouns'),
-            'verbs': my_mad_lib.get('adjectives'),
+            'verbs': my_mad_lib.get('verbs'),
             'miscellanies': my_mad_lib.get('miscellanies')
         })
